@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" id="html">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TodoApp</title>
+
+    <!-- FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="./assets/css/main.css" />
+  </head>
+  <body>
+    <div class="bg_img" alt=""></div>
+
+    <div class="wrapper">
+      <header>
+        <span>
+          <h1>TODO</h1>
+          <button class="theme_toggle" onclick="themeToggle()"></button>
+        </span>
+      </header>
+
+      <div class="input_box">
+        <label for="todoInput"></label>
+        <input id="todoInput" type="text" placeholder="Create a new todo..." />
+      </div>
+
+      <section>
+        <div class="todos">
+        </div>
+        <div class="footer">
+          <p><span>0</span> items left</p>
+          <button><p>Clear Completed</p></button>
+        </div>
+      </section>
+    </div>
+    <!-- JAVASCRIPT -->
+    <script src="./assets/js/themeToggle.js"></script>
+  </body>
+</html>
