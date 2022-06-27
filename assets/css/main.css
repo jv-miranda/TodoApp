@@ -5,7 +5,11 @@
   /*----------- COLOR PALLETE ---------------- */
   /* PRIMARY */
   --bright-blue: hsl(220, 98%, 61%);
-  --check-bg: linear-gradient hsl(192, 100%, 67%) to hsl(280, 87%, 65%);
+  --check-bg: linear-gradient(
+    to right bottom,
+    hsl(192, 100%, 67%),
+    hsl(280, 87%, 65%)
+  );
 
   /* LIGHT MODE */
   --very-light-gray: hsl(0, 0%, 98%);
@@ -32,11 +36,14 @@
   box-sizing: border-box;
 }
 
+button {
+  all: unset;
+}
 /* ------------ BACKGROUND ------------ */
 
 body {
   background-color: var(--very-light-grayish-blue);
-  transition: 700ms;
+  transition: 500ms;
 }
 
 html.dark_mode_enabled body {
@@ -54,7 +61,7 @@ html.dark_mode_enabled body {
   position: fixed;
   top: 0;
   z-index: -1;
-  transition: background-image 700ms;
+  transition: background-image 500ms;
 }
 
 html.dark_mode_enabled .bg_img {
@@ -86,7 +93,7 @@ button.theme_toggle {
   width: 2rem;
   height: 2rem;
   background-size: contain;
-  transition: 700ms;
+  transition: 500ms;
 }
 
 html.dark_mode_enabled button.theme_toggle {
@@ -104,11 +111,11 @@ html.dark_mode_enabled button.theme_toggle {
   padding-block: 1rem;
   padding-inline: 2rem;
   border-radius: 1rem;
-  transition: background-color 700ms;
+  transition: background-color 500ms;
   margin-bottom: 2rem;
 }
 
-html.dark_mode_enabled .input_box{
+html.dark_mode_enabled .input_box {
   background-color: var(--very-dark-desaturated-Blue);
 }
 
@@ -138,7 +145,8 @@ section {
   background-color: var(--very-light-gray);
   width: 100%;
   border-radius: 1rem;
-  transition: 700ms;
+  transition: 500ms;
+  overflow: hidden;
 }
 
 html.dark_mode_enabled section {
@@ -158,6 +166,97 @@ section .footer p {
   color: var(--dark-grayish-blue);
 }
 
-section .footer button {
+/* ------------ TODO CARDS -------------- */
+.todos .card {
+  background-color: var(--very-light-gray);
+  width: 100%;
+  height: 5rem;
+  padding-block: 1rem;
+  padding-inline: 2rem;
+  transition: 500ms;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.todos .card div {
+  display: flex;
+  align-items: center;
+  gap: 1.4rem;
+}
+
+html.dark_mode_enabled .todos .card {
+  background-color: var(--very-dark-desaturated-Blue);
+}
+
+.todos .card input {
+  -webkit-appearance: none;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  border: var(--light-grayish-blue) 0.1rem solid;
+  position: relative;
+}
+
+.todos .card p {
+  color: gray;
+  font-size: 1.4rem;
+  line-height: 2rem;
+}
+
+.todos .card input:checked {
+  background-image: var(--check-bg);
+}
+
+.todos .card input:checked::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background-image: url(../svgs/icon-check.svg);
+  background-repeat: no-repeat;
+  top: 0.4rem;
+  left: 0.4rem;
+}
+
+.todos .card input:checked ~ .todo_text {
+  text-decoration: line-through;
+  opacity: 0.5;
+}
+
+.todos .card button {
   all: unset;
+  justify-self: flex-end;
+  width: 1.8rem;
+  height: 1.8rem;
+}
+
+/* ------------ FILTER CARD --------------- */
+.filter_card {
+  margin-top: 2rem;
+  height: 5rem;
+  padding-block: 1rem;
+  padding-inline: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1rem;
+  background-color: var(--very-light-gray);
+  gap: 1rem;
+
+  transition: background-color 500ms;
+}
+
+html.dark_mode_enabled .filter_card {
+  background-color: var(--very-dark-desaturated-Blue);
+}
+
+.filter_card button {
+  color: gray;
+  font-weight: 700;
+}
+
+.filter_card button.on {
+  color: var(--bright-blue);
 }
