@@ -36,17 +36,23 @@
       <section>
         <div class="todos"></div>
         <div class="footer">
-          <p><span>0</span> items left</p>
-          <button><p>Clear Completed</p></button>
+          <p><span id="counter">0</span> items left</p>
+          <button onclick="clearCompletedTodos()">
+            <p>Clear Completed</p>
+          </button>
         </div>
       </section>
 
       <div class="filter_card">
-        <button class="on">All</button>
-        <button>Active</button>
-        <button>Completed</button>
+        <button id="allButton" onclick="filterTodos('card') ;addOnClass(allButton)" class="on">All</button>
+        <button id="activeButton" onclick="filterTodos('active') ; addOnClass(activeButton)">Active</button>
+        <button id="completedButton" onclick="filterTodos('completed') ; addOnClass(completedButton)">Completed</button>
       </div>
     </div>
+
+    <footer>
+      Drag and drop to reorder list
+    </footer>
     <!-- JAVASCRIPT -->
     <script src="./assets/js/themeToggle.js"></script>
     <script src="./assets/js/app.js"></script>

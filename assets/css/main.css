@@ -39,6 +39,11 @@
 button {
   all: unset;
 }
+
+button,
+input, label {
+  cursor: pointer;
+}
 /* ------------ BACKGROUND ------------ */
 
 body {
@@ -89,6 +94,7 @@ h1 {
 
 button.theme_toggle {
   all: unset;
+  cursor: pointer;
   background-image: url(../svgs/icon-moon.svg);
   width: 2rem;
   height: 2rem;
@@ -167,6 +173,11 @@ section .footer p {
 }
 
 /* ------------ TODO CARDS -------------- */
+.todos {
+  display: flex;
+  flex-direction: column;
+}
+
 .todos .card {
   background-color: var(--very-light-gray);
   width: 100%;
@@ -177,6 +188,7 @@ section .footer p {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  order: 1;
 }
 
 .todos .card div {
@@ -206,6 +218,10 @@ html.dark_mode_enabled .todos .card {
 
 .todos .card input:checked {
   background-image: var(--check-bg);
+}
+
+.todos .card.completed {
+  order: 2;
 }
 
 .todos .card input:checked::before {
@@ -243,7 +259,7 @@ html.dark_mode_enabled .todos .card {
   justify-content: center;
   border-radius: 1rem;
   background-color: var(--very-light-gray);
-  gap: 1rem;
+  gap: 1.4rem;
 
   transition: background-color 500ms;
 }
@@ -257,6 +273,39 @@ html.dark_mode_enabled .filter_card {
   font-weight: 700;
 }
 
-.filter_card button.on {
+.filter_card button.on,
+.filter_card button:hover {
   color: var(--bright-blue);
+}
+
+/* ------------ FOOTER --------------- */
+footer {
+  margin-block: 4rem;
+  color: gray;
+  text-align: center;
+}
+
+/* --------- BREAKPOINTS ------------ */
+@media (min-width: 700px) {
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .wrapper {
+    width: 60rem;
+  }
+
+  .bg_img {
+    background-image: url(../imgs/bg-desktop-light.jpg);
+  }
+
+  html.dark_mode_enabled .bg_img {
+    background-image: url(../imgs/bg-desktop-dark.jpg);
+  }
+
+  header {
+    margin-top: 7rem;
+  }
 }
