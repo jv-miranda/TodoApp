@@ -41,7 +41,8 @@ button {
 }
 
 button,
-input, label {
+input,
+label {
   cursor: pointer;
 }
 /* ------------ BACKGROUND ------------ */
@@ -172,13 +173,29 @@ section .footer p {
   color: var(--dark-grayish-blue);
 }
 
+section .footer button p:hover {
+  color: var(--very-dark-desaturated-Blue);
+}
+
+html.dark_mode_enabled section .footer button p:hover {
+  color: var(--very-light-gray);
+}
+
 /* ------------ TODO CARDS -------------- */
 .todos {
   display: flex;
   flex-direction: column;
 }
 
-.todos .card {
+.todos.activeFilter .card.completed {
+  display: none;
+}
+
+.todos.completedFilter .card.active {
+  display: none;
+}
+
+.todos .card_content {
   background-color: var(--very-light-gray);
   width: 100%;
   height: 5rem;
@@ -188,20 +205,31 @@ section .footer p {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  order: 1;
 }
 
-.todos .card div {
+.todos .bottomLine {
+  height: 1px;
+  background-color: var(--light-grayish-blue);
+  width: 100%;
+  opacity: 0.7;
+  transition: opacity 500ms;
+}
+
+html.dark_mode_enabled .todos .bottomLine {
+  opacity: 0.2;
+}
+
+.todos .card_content div {
   display: flex;
   align-items: center;
   gap: 1.4rem;
 }
 
-html.dark_mode_enabled .todos .card {
+html.dark_mode_enabled .todos .card_content {
   background-color: var(--very-dark-desaturated-Blue);
 }
 
-.todos .card input {
+.todos .card_content input {
   -webkit-appearance: none;
   width: 2rem;
   height: 2rem;
@@ -210,21 +238,22 @@ html.dark_mode_enabled .todos .card {
   position: relative;
 }
 
-.todos .card p {
-  color: gray;
+.todos .card_content p {
+  color: var(--very-dark-desaturated-Blue);
   font-size: 1.4rem;
   line-height: 2rem;
+  cursor: pointer;
 }
 
-.todos .card input:checked {
+html.dark_mode_enabled .todos .card_content p {
+  color: var(--very-light-gray);
+}
+
+.todos .card_content input:checked {
   background-image: var(--check-bg);
 }
 
-.todos .card.completed {
-  order: 2;
-}
-
-.todos .card input:checked::before {
+.todos .card_content input:checked::before {
   content: '';
   position: absolute;
   width: 100%;
@@ -236,16 +265,17 @@ html.dark_mode_enabled .todos .card {
   left: 0.4rem;
 }
 
-.todos .card input:checked ~ .todo_text {
+.todos .card_content input:checked ~ .todo_text {
   text-decoration: line-through;
   opacity: 0.5;
 }
 
-.todos .card button {
+.todos .card_content button {
   all: unset;
   justify-self: flex-end;
   width: 1.8rem;
   height: 1.8rem;
+  cursor: pointer;
 }
 
 /* ------------ FILTER CARD --------------- */
@@ -259,23 +289,38 @@ html.dark_mode_enabled .todos .card {
   justify-content: center;
   border-radius: 1rem;
   background-color: var(--very-light-gray);
-  gap: 1.4rem;
 
   transition: background-color 500ms;
+}
+
+.filter_card_buttons {
+  display: flex;
+  gap: 1.4rem;
+}
+
+.filter_card_buttons:nth-child(2) {
+  display: none;
 }
 
 html.dark_mode_enabled .filter_card {
   background-color: var(--very-dark-desaturated-Blue);
 }
 
-.filter_card button {
+.filter_card_buttons button {
   color: gray;
   font-weight: 700;
 }
 
-.filter_card button.on,
-.filter_card button:hover {
+.filter_card_buttons button.on {
   color: var(--bright-blue);
+}
+
+.filter_card_buttons button:hover {
+  color: var(--very-dark-desaturated-Blue);
+}
+
+html.dark_mode_enabled .filter_card_buttons button:hover {
+  color: var(--very-light-gray);
 }
 
 /* ------------ FOOTER --------------- */
@@ -292,7 +337,7 @@ footer {
     flex-direction: column;
     align-items: center;
   }
-  
+
   .wrapper {
     width: 60rem;
   }
@@ -307,5 +352,38 @@ footer {
 
   header {
     margin-top: 7rem;
+  }
+}
+
+@media (min-width: 1023px) {
+  h1 {
+    font-size: 3.5rem;
+  }
+
+  button.theme_toggle {
+    width: 2.3rem;
+    height: 2.3rem;
+  }
+
+  .todos .card_content button {
+    display: none;
+  }
+
+  .todos .card:hover .card_content button {
+    display: block;
+  }
+
+  .filter_card_buttons:nth-child(2) {
+    display: flex;
+  }
+
+  .filter_card {
+    display: none;
+  }
+
+  .input_box,
+  section .footer,
+  .todos .card_content {
+    height: 6rem;
   }
 }

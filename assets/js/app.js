@@ -16,6 +16,7 @@ todoInput.addEventListener(`keypress`, e => {
   if (e.key === `Enter`) {
     addTodoToHtml(todoInput.value)
     idGenarated++
+
     updateTodosCounter()
   }
 })
@@ -27,11 +28,16 @@ function addTodoToHtml(todoText) {
     newTodo.classList.add(`card`, `active`)
     newTodo.id = `card${idGenarated}`
     newTodo.innerHTML = `
-    <div>
-      <input type="checkbox" onclick="toggleCompletedClass('card${idGenarated}')">
-      <p class="todo_text">${todoText}</p>
+    <div class="card_content">
+      <div>
+        <input type="checkbox" onclick="toggleCompletedClass('card${idGenarated}')">
+        <p class="todo_text">${todoText}</p>
+      </div>
+      
+      <button onclick="deleteTodo('card${idGenarated}')"><img src="./assets/svgs/icon-cross.svg" alt=""/></button>
     </div>
-    <button onclick="deleteTodo('card${idGenarated}')"><img src="./assets/svgs/icon-cross.svg" alt=""></button>
+    
+    <div class="bottomLine"></div>
   `
     todosDiv.appendChild(newTodo)
     todoInput.value = ``
@@ -72,14 +78,11 @@ function clearCompletedTodos() {
 }
 
 function filterTodos(HtmlClass) {
-  const todos = document.querySelectorAll(`.card`)
-  for (let todo of todos) {
-    if (!todo.classList.contains(`${HtmlClass}`)) {
-      todo.style.display = `none`
-    } else {
-      todo.style.display = `flex`
-    }
-  }
+  const todos = document.querySelector(`.todos`)
+  todos.classList.remove(`activeFilter`)
+  todos.classList.remove(`completedFilter`)
+
+  todos.classList.add(`${HtmlClass}`)
 }
 
 function addOnClass(todoId) {

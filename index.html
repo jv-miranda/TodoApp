@@ -34,9 +34,43 @@
       </div>
 
       <section>
-        <div class="todos"></div>
+        <div class="todos">
+          <!-- <div class="card active" id="card0">
+            <div class="card_content">
+              <div>
+                <input type="checkbox" onclick="toggleCompletedClass('card0')">
+                <p class="todo_text">Testing Todo</p>
+              </div>
+              <button onclick="deleteTodo('card0')"><img src="./assets/svgs/icon-cross.svg" alt=""/></button>
+            </div>
+            <div class="bottomLine"></div>
+          </div> -->
+        </div>
         <div class="footer">
           <p><span id="counter">0</span> items left</p>
+          
+          <div class="filter_card_buttons">
+            <button
+            id="allButton"
+            onclick="filterTodos('all') ; addOnClass(allButton)"
+            class="on"
+          >
+            All
+          </button>
+          <button
+            id="activeButton"
+            onclick="filterTodos('activeFilter') ; addOnClass(activeButton)"
+          >
+            Active
+          </button>
+          <button
+            id="completedButton"
+            onclick="filterTodos('completedFilter') ; addOnClass(completedButton)"
+          >
+            Completed
+          </button>
+          </div>
+          
           <button onclick="clearCompletedTodos()">
             <p>Clear Completed</p>
           </button>
@@ -44,15 +78,31 @@
       </section>
 
       <div class="filter_card">
-        <button id="allButton" onclick="filterTodos('card') ;addOnClass(allButton)" class="on">All</button>
-        <button id="activeButton" onclick="filterTodos('active') ; addOnClass(activeButton)">Active</button>
-        <button id="completedButton" onclick="filterTodos('completed') ; addOnClass(completedButton)">Completed</button>
+        <div class="filter_card_buttons">
+          <button
+          id="allButton"
+          onclick="filterTodos('all') ; addOnClass(allButton)"
+          class="on"
+        >
+          All
+        </button>
+        <button
+          id="activeButton"
+          onclick="filterTodos('activeFilter') ; addOnClass(activeButton)"
+        >
+          Active
+        </button>
+        <button
+          id="completedButton"
+          onclick="filterTodos('completedFilter') ; addOnClass(completedButton)"
+        >
+          Completed
+        </button>
+        </div>
       </div>
     </div>
 
-    <footer>
-      Drag and drop to reorder list
-    </footer>
+    <footer>Drag and drop to reorder list</footer>
     <!-- JAVASCRIPT -->
     <script src="./assets/js/themeToggle.js"></script>
     <script src="./assets/js/app.js"></script>
