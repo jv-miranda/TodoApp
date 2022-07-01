@@ -16,6 +16,22 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="./assets/css/main.css" />
+
+    <!-- FAVICON -->
+    <link
+      rel="shortcut icon"
+      href="./assets/imgs/favicon.ico"
+      type="image/x-icon"
+    />
+    <link rel="icon" href="./assets/imgs/favicon.ico" type="image/x-icon" />
+
+    <!-- SORTABLE LIB -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.0/Sortable.min.js"
+      integrity="sha512-Eezs+g9Lq4TCCq0wae01s9PuNWzHYoCMkE97e2qdkYthpI0pzC3UGB03lgEHn2XM85hDOUF6qgqqszs+iXU4UA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
   </head>
   <body>
     <div class="bg_img" alt=""></div>
@@ -35,42 +51,35 @@
 
       <section>
         <div class="todos">
-          <!-- <div class="card active" id="card0">
-            <div class="card_content">
-              <div>
-                <input type="checkbox" onclick="toggleCompletedClass('card0')">
-                <p class="todo_text">Testing Todo</p>
-              </div>
-              <button onclick="deleteTodo('card0')"><img src="./assets/svgs/icon-cross.svg" alt=""/></button>
-            </div>
-            <div class="bottomLine"></div>
-          </div> -->
+          <div class="dragArea" id="dragArea"></div>
         </div>
         <div class="footer">
           <p><span id="counter">0</span> items left</p>
-          
+
           <div class="filter_card_buttons">
             <button
-            id="allButton"
-            onclick="filterTodos('all') ; addOnClass(allButton)"
-            class="on"
-          >
-            All
-          </button>
-          <button
-            id="activeButton"
-            onclick="filterTodos('activeFilter') ; addOnClass(activeButton)"
-          >
-            Active
-          </button>
-          <button
-            id="completedButton"
-            onclick="filterTodos('completedFilter') ; addOnClass(completedButton)"
-          >
-            Completed
-          </button>
+              id="allButton"
+              class="filter_button on"
+              onclick="filterTodos('all') ; addOnClass('allButton')"
+            >
+              All
+            </button>
+            <button
+              id="activeButton"
+              class="filter_button"
+              onclick="filterTodos('activeFilter') ; addOnClass('activeButton')"
+            >
+              Active
+            </button>
+            <button
+              id="completedButton"
+              class="filter_button"
+              onclick="filterTodos('completedFilter') ; addOnClass('completedButton')"
+            >
+              Completed
+            </button>
           </div>
-          
+
           <button onclick="clearCompletedTodos()">
             <p>Clear Completed</p>
           </button>
@@ -80,24 +89,26 @@
       <div class="filter_card">
         <div class="filter_card_buttons">
           <button
-          id="allButton"
-          onclick="filterTodos('all') ; addOnClass(allButton)"
-          class="on"
-        >
-          All
-        </button>
-        <button
-          id="activeButton"
-          onclick="filterTodos('activeFilter') ; addOnClass(activeButton)"
-        >
-          Active
-        </button>
-        <button
-          id="completedButton"
-          onclick="filterTodos('completedFilter') ; addOnClass(completedButton)"
-        >
-          Completed
-        </button>
+            id="allButtonBottom"
+            class="filter_button on"
+            onclick="filterTodos('all') ; addOnClass('allButtonBottom')"
+          >
+            All
+          </button>
+          <button
+            id="activeButtonBottom"
+            class="filter_button"
+            onclick="filterTodos('activeFilter') ; addOnClass('activeButtonBottom')"
+          >
+            Active
+          </button>
+          <button
+            id="completedButtonBottom"
+            class="filter_button"
+            onclick="filterTodos('completedFilter') ; addOnClass('completedButtonBottom')"
+          >
+            Completed
+          </button>
         </div>
       </div>
     </div>
@@ -106,5 +117,6 @@
     <!-- JAVASCRIPT -->
     <script src="./assets/js/themeToggle.js"></script>
     <script src="./assets/js/app.js"></script>
+    <script src="./assets/js/sortable.js"></script>
   </body>
 </html>

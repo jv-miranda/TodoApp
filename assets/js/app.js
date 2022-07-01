@@ -23,23 +23,24 @@ todoInput.addEventListener(`keypress`, e => {
 
 function addTodoToHtml(todoText) {
   if (todoText !== ``) {
-    const todosDiv = document.querySelector(`.todos`)
+    const dragArea = document.querySelector(`.dragArea`)
     const newTodo = document.createElement(`div`)
     newTodo.classList.add(`card`, `active`)
     newTodo.id = `card${idGenarated}`
     newTodo.innerHTML = `
     <div class="card_content">
       <div>
-        <input type="checkbox" onclick="toggleCompletedClass('card${idGenarated}')">
+        <input type="checkbox" onclick="toggleCompletedClass('card${idGenarated}')"/>
         <p class="todo_text">${todoText}</p>
       </div>
-      
-      <button onclick="deleteTodo('card${idGenarated}')"><img src="./assets/svgs/icon-cross.svg" alt=""/></button>
+      <button onclick="deleteTodo('card${idGenarated}')">
+        <img src="./assets/svgs/icon-cross.svg" alt="" />
+      </button>
     </div>
     
     <div class="bottomLine"></div>
   `
-    todosDiv.appendChild(newTodo)
+    dragArea.appendChild(newTodo)
     todoInput.value = ``
   }
 }
@@ -85,10 +86,11 @@ function filterTodos(HtmlClass) {
   todos.classList.add(`${HtmlClass}`)
 }
 
-function addOnClass(todoId) {
-  allButton.classList.remove(`on`)
-  activeButton.classList.remove(`on`)
-  completedButton.classList.remove(`on`)
-
-  todoId.classList.add(`on`)
+function addOnClass(buttonId) {
+  const buttons = document.querySelectorAll(`.filter_button`)
+  const button = document.querySelector(`#${buttonId}`)
+  buttons.forEach(button => {
+    button.classList.remove(`on`)
+  })
+  button.classList.add(`on`)
 }

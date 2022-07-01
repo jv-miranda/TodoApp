@@ -45,6 +45,14 @@ input,
 label {
   cursor: pointer;
 }
+
+.input_box,
+section,
+.filter_card {
+  -webkit-box-shadow: 0px 7px 21px 5px rgba(0, 0, 0, 0.11);
+  -moz-box-shadow: 0px 7px 21px 5px rgba(0, 0, 0, 0.11);
+  box-shadow: 0px 7px 21px 5px rgba(0, 0, 0, 0.11);
+}
 /* ------------ BACKGROUND ------------ */
 
 body {
@@ -187,6 +195,10 @@ html.dark_mode_enabled section .footer button p:hover {
   flex-direction: column;
 }
 
+.todos .card.dragging {
+  opacity: 0.3;
+}
+
 .todos.activeFilter .card.completed {
   display: none;
 }
@@ -243,6 +255,7 @@ html.dark_mode_enabled .todos .card_content {
   font-size: 1.4rem;
   line-height: 2rem;
   cursor: pointer;
+  transition: color 500ms;
 }
 
 html.dark_mode_enabled .todos .card_content p {
