@@ -30,9 +30,10 @@ function addTodoToHtml(todoText) {
     newTodo.innerHTML = `
     <div class="card_content">
       <div>
-        <input type="checkbox" onclick="toggleCompletedClass('card${idGenarated}')"/>
+        <input type="checkbox" class="checkbox" onclick="toggleCompletedClass('card${idGenarated}')"/>
         <p class="todo_text">${todoText}</p>
       </div>
+      
       <button onclick="deleteTodo('card${idGenarated}')">
         <img src="./assets/svgs/icon-cross.svg" alt="" />
       </button>
