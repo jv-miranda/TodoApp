@@ -30,11 +30,11 @@ function addTodoToHtml(todoText) {
     newTodo.innerHTML = `
     <div class="card_content">
       <div>
-        <input type="checkbox" class="checkbox" onclick="toggleCompletedClass('card${idGenarated}')"/>
+        <input type="checkbox" class="filteredOnSortable" onclick="toggleCompletedClass('card${idGenarated}')"/>
         <p class="todo_text">${todoText}</p>
       </div>
       
-      <button onclick="deleteTodo('card${idGenarated}')">
+      <button onclick="deleteTodo('card${idGenarated}')" class="filteredOnSortable">
         <img src="./assets/svgs/icon-cross.svg" alt="" />
       </button>
     </div>
@@ -70,11 +70,7 @@ function deleteTodo(cardId) {
 
 function clearCompletedTodos() {
   const todos = document.querySelectorAll(`.card`)
-  for (let todo of todos) {
-    if (todo.classList.contains(`completed`)) {
-      todo.remove()
-    }
-  }
+  todos.forEach(todo => {todo.remove()})
 
   updateTodosCounter()
 }
