@@ -70,7 +70,11 @@ function deleteTodo(cardId) {
 
 function clearCompletedTodos() {
   const todos = document.querySelectorAll(`.card`)
-  todos.forEach(todo => {todo.remove()})
+  todos.forEach(todo => {
+    if (todo.classList.contains(`completed`)) {
+      todo.remove()
+    }
+  })
 
   updateTodosCounter()
 }
